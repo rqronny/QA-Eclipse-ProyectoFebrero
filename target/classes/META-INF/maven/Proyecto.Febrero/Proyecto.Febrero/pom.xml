@@ -1,0 +1,75 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Proyecto.Febrero</groupId>
+  <artifactId>Proyecto.Febrero</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Proyecto.Febrero</name>
+   <dependencies>
+       <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.8.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.11.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-core</artifactId>
+            <version>7.11.0</version>
+        </dependency>
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.11.0</version>
+		</dependency>
+
+    </dependencies>
+    <build>
+		<plugins>
+			<plugin>
+				<groupId>com.trivago.rta</groupId>
+		    	<artifactId>cluecumber-report-plugin</artifactId>
+		    	<version>2.5.0</version>
+		    	<executions>
+			    	<execution>
+						<id>report</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>reporting</goal>
+						</goals>
+					</execution>					
+				</executions>
+
+				
+				<configuration>
+					<customPageTitle>Reporte de pruebas web con cucumber</customPageTitle>
+					<sourceJsonReportDirectory>${project.build.directory}/cucumber-report</sourceJsonReportDirectory>
+					<generatedHtmlReportDirectory>${project.build.directory}/generated-report/${buildNumber}</generatedHtmlReportDirectory>
+					<customParameters>
+						<Custom_Parameter>Reporte de Ejecución</Custom_Parameter>
+						<Custom_URL>http://www.agilelearnigperu.com</Custom_URL>
+						<_Text>Curso de automatización de la web selenium y cucumber</_Text>
+					</customParameters>
+					<expandBeforeAfterHooks>true</expandBeforeAfterHooks>
+					<expandStepHooks>true</expandStepHooks>
+					<expandDocStrings>true</expandDocStrings>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
